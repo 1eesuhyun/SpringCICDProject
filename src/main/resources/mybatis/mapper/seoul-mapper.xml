@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sist.web.mapper.SeoulMapper">
+<!-- 
+	리턴형 / 메소드 / 매개변수
+	                | parameterType
+	         | id명과 일치
+	 | resultType : VO(1), VO(여러개) = selectList
+	               = selectOne
+	 public List<SeoulVO>
+ -->
+<select id="seoulListData" resultType="com.sist.web.vo.SeoulVO" parameterType="hashmap">
+ SELECT no,title,poster,address,hit,msg
+ FROM ${table_name}
+ ORDER BY no ASC
+ OFFSET #{start} ROWS FETCH NEXT 6 ROWS ONLY
+</select>
+<select id="seoulTotalPage" resultType="int" parameterType="hashmap">
+ SELECT CEIL(COUNT(*)/6.0) FROM ${table_name}
+</select>
+</mapper>
