@@ -1,5 +1,6 @@
 package com.sist.web.mapper;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Update;
 import org.springframework.stereotype.Repository;
 import java.util.*;
 import com.sist.web.vo.*;
@@ -20,4 +21,16 @@ public interface SeoulMapper {
 	public List<SeoulVO> seoulListData(Map map);
 	public int seoulTotalPage(Map map);
 	// => 인터페이스는 서로 다른 클래스를 연결(리모콘) => 모든 변수/메소드는 public
+	/*
+	 * <select id="seoulDetailData" resultType="com.sist.web.vo.SeoulVO" parameterType="hashmap">
+		 SELECT no,title,poster,address,hit
+		 FROM ${table_name}
+		 WHERE no=#{no}
+		</select>
+	 */
+	public SeoulVO seoulDetailData(Map map);
+	@Update("UPDATE ${table_name} SET "
+			+ "hit=hit+1 "
+			+ "WHERE no=#{no}")
+	public void seoulHitIncrement(Map map);
 }

@@ -1,6 +1,6 @@
 #port
-server:
- port: 9090
+#server:
+ #port: 9090
 #MVC
 spring:
  mvc:

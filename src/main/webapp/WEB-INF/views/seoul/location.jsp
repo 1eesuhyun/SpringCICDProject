@@ -8,8 +8,6 @@
 </head>
 <body>
     <!-- Blog Section Begin -->
-    
-                
                 <div class="col-lg-8 col-md-7" id="seoul_list">
                     <div class="row" >
                         <div class="col-lg-6 col-md-6 col-sm-6" v-for="vo in store.list">
@@ -24,7 +22,7 @@
                                     </ul>
                                     <h5><a href="#">{{vo.title}}</a></h5>
                                     <p>{{vo.address}}</p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                                    <a :href="'http://localhost:8080/seoul/detail?no='+vo.no+'&type='+store.type" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
                             </div>
                         </div>

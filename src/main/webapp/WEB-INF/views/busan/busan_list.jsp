@@ -24,7 +24,7 @@
                                     </ul>
                                     <h5><a href="#">{{vo.title}}</a></h5>
                                     <p>{{vo.address}}</p>
-                                    <a href="#" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
+                                    <a :href="'/busan/detail?no='+vo.no" class="blog__btn">READ MORE <span class="arrow_right"></span></a>
                                 </div>
                             </div>
                         </div>

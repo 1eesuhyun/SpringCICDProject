@@ -48,4 +48,27 @@ public class SeoulRestController {
 		}
 		return new ResponseEntity<>(map,HttpStatus.OK);
 	}
+	@GetMapping("/seoul/detail_vue/")
+	public ResponseEntity<Map> seoul_detail(@RequestParam("no")int no,@RequestParam("type")int type)
+	{
+		Map map=new HashMap();
+		try
+		{
+			map.put("table_name", tables[type]);
+			map.put("no", no);
+			SeoulVO vo=sservice.seoulDetailData(map);
+			String[] datas=vo.getAddress().split(" ");
+			List<FoodVO> list=sservice.foodNearData4(datas[2]);
+			map.put("list", list);
+			// 주변 맛집
+			map=new HashMap();
+			map.put("vo", vo);
+			map.put("list", list);
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(map,HttpStatus.OK);
+	}
 }

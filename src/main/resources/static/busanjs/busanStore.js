@@ -1,4 +1,24 @@
 const {defineStore} = Pinia
+/*
+	Vue.createApp({
+		= state
+		data(){
+			return{
+				
+			}
+		},
+		= actions
+		methods:{
+			
+		},
+		= 각 페이지 처리 => onMounted(()=>{
+			
+		})
+		mounted(){
+			
+		}
+	})
+*/
 const useBusanStore=defineStore('busan',{
 	state:()=>({
 		list:[],
@@ -7,12 +27,15 @@ const useBusanStore=defineStore('busan',{
 		endPage:0,
 		startPage:0,
 		type:1,
-		detail:{}
+		detail:{
+			vo:{},
+			list:[]
+		}
 	}),
 	actions:{
 		async busanListData(type){
 			this.type=type
-			const res=await axios.get('http://localhost:9090/busan/list_vue/',{
+			const res=await axios.get('http://localhost:8080/busan/list_vue/',{
 				params:{
 					page:this.curpage,
 					type:this.type
@@ -40,7 +63,16 @@ const useBusanStore=defineStore('busan',{
 				start++
 			}
 			return arr
-		}
+		},
 		// 상세보기
+		async busanDetailData(no){
+			const res=await axios.get('http://localhost:8080/busan/detail_vue/',{
+				params:{
+					no:no
+				}
+			})
+			console.log(res.data)
+			this.detail=res.data
+		}
 	}
 })

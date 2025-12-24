@@ -47,4 +47,24 @@ public class BusanRestController {
 		}
 		return new ResponseEntity<>(map,HttpStatus.OK);
 	}
+	@GetMapping("/busan/detail_vue/")
+	public ResponseEntity<Map> busan_detail(@RequestParam("no")int no)
+	{
+		Map map=new HashMap();
+		try
+		{
+			BusanVO vo=bservice.busanDetailData(no);
+			map.put("vo", vo);
+			String[] datas=vo.getAddress().split(" ");
+			// 주변 맛집
+			List<FoodVO> list=bservice.foodNearData4(datas[2]);
+			map.put("list", list);
+		}catch(Exception ex)
+		{
+			ex.printStackTrace();
+			return new ResponseEntity<>(null,HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+		return new ResponseEntity<>(map,HttpStatus.OK);
+	}
+	
 }

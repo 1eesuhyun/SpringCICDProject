@@ -17,14 +17,18 @@ const useSeoulStore=defineStore('seoul',{
 		endPage:0,
 		startPage:0,
 		type:1,
-		detail:{}
+		detail:{
+			vo:{},
+			list:[]
+		} // 실제 상세보기, 주변 맛집
+		// {vo:{},list:[]} store.detail.vo, store.detail.list
 	}),
 	// 기능 설정 => axios => BASE_URL
 	actions:{
 		// 목록 => 페이지 처리
 		async seoulListData(type){
 			this.type=type
-			const res=await axios.get('http://localhost:9090/seoul/list_vue/',{
+			const res=await axios.get('http://localhost:8080/seoul/list_vue/',{
 				params:{
 					page:this.curpage,
 					type:this.type
@@ -52,7 +56,18 @@ const useSeoulStore=defineStore('seoul',{
 				start++
 			}
 			return arr
-		}
+		},
 		// 상세보기
+		async seoulDetailData(no,type){
+			const res=await axios.get('http://localhost:8080/seoul/detail_vue/',{
+				params:{
+					no:no,
+					type:type
+					// ?no=1&type=1
+				}
+			})
+			console.log(res.data)
+			this.detail=res.data
+		}
 	}
 })

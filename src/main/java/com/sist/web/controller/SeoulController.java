@@ -25,4 +25,11 @@ public class SeoulController {
 		model.addAttribute("main_jsp", "../seoul/seoul_main.jsp");
 		return "main/main";
 	}
+	
+	@GetMapping("/seoul/detail")
+	public String seoul_detail(Model model)
+	{
+		model.addAttribute("main_jsp", "../seoul/detail.jsp");
+		return "main/main";
+	}
 }
