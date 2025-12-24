@@ -48,10 +48,11 @@
                             <i class="fa fa-star-half-o"></i>
                             <span>(18 reviews)</span>
                         </div>
-                        <p>{{store.detail.vo.address}}</p>
+                        <p></p>
                         <ul>
                             <li><b>주소</b> <span>{{store.detail.vo.address}}</span></li>
                             <li><b>조회수</b> <span>{{store.detail.vo.hit}}</span></li>
+                            <li><b>전화번호</b> <span>010-1234-5678</span></li>
                             <li class="text-right"><button class="btn-xs btn-info" onclick="javascript:history.back()">목록</button></li>
                         </ul>
                     </div>
