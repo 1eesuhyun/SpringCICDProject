@@ -56,10 +56,18 @@
       
                                 </ul>
                             </li>
+                            <li><a href="#">맛집</a>
+                                <ul class="header__menu__dropdown">
+                                    <li><a href="/food/list">맛집목록</a></li>
+                                    <li><a href="/food/find">맛집검색</a></li>
+                                    <li><a href="/food/reserve">맛집예약</a></li>
+      
+                                </ul>
+                            </li>
                             <li><a href="/seoul">서울여행</a></li>
                             <li><a href="/busan">부산여행</a></li>
                             
-                            <li><a href="./blog.html">커뮤니티</a></li>
+                            <li><a href="/board/list">커뮤니티</a></li>
                             <li><a href="./contact.html">마이페이지</a></li>
                         </ul>
                     </nav>
