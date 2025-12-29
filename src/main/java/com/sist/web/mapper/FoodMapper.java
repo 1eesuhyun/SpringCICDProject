@@ -51,4 +51,5 @@ public interface FoodMapper {
 			+ "FROM menupan_food "
 			+ "WHERE fno=#{fno}")
 	public FoodVO foodDetailData(int fno);
+	
 }

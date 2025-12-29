@@ -49,5 +49,18 @@ public class FoodController {
 		model.addAttribute("main_jsp", "../food/detail.jsp");
 		return "main/main";
 	}
-	
+	@GetMapping("/food/find")
+	public String food_find(Model model)
+	{
+		model.addAttribute("main_jsp", "../food/find.jsp");
+		return "main/main";
+	}
+	// detail => pinia : 지도 / 댓글 => 로그인 처리
+	@GetMapping("/food/detail_vue")
+	public String food_detail_vue(@RequestParam("fno")int fno,Model model)
+	{
+		
+		model.addAttribute("main_jsp", "../food/find_detail.jsp");
+		return "main/main";
+	}
 }
